@@ -23,7 +23,7 @@ d3.csv("data/scatter-data.csv").then((data) => {
 
 	
 	// find max of x and y values
-	const MAX_X = d3.max(data, (d) => { return parseInt(d.x); })
+	const MAX_X = d3.max(data, (d) => { return parseInt(d.x); });
 	const MAX_Y = d3.max(data, (d) => { return parseInt(d.y); });
 
 	  // create scales to map x and y values to pixels 
@@ -48,7 +48,7 @@ d3.csv("data/scatter-data.csv").then((data) => {
         .attr("cx", (d) => { return (X_SCALE(d.x) + MARGINS.left); }) 
         .attr("cy", (d) => { return (Y_SCALE(d.y) + MARGINS.bottom); })
         .attr("r", 8)
-        .attr("class", "point")
+        .attr("class", "point");
 
 
     // function to change color of point on hover
@@ -61,19 +61,23 @@ d3.csv("data/scatter-data.csv").then((data) => {
     // function to remove color after hovered
     function revertColor(){
     	d3.select(this)
-			  .style("fill", "black");
+			  .style("fill", "seagreen");
     };
 		
 
     // function to add border + display coordinates
 
     const PTSELECT = d3.select("#point-info")
-	                        .append("div")
+	                        .append("div");
 
 		function selectCoor(d){
 			const circle = d3.select(this);
 			circle.classed("bordered", !circle.classed("bordered"));
-			PTSELECT.html("<br> Coordinate of Selected Point: (" + d.x + "," + d.y + ")");
+			const xPt = circle.attr("cx");
+			console.log(xPt);
+			const yPt = circle.attr("cy");
+			console.log(yPt);
+			PTSELECT.html("<br> Coordinate of Selected Point: (" + xPt + "," + yPt + ")");
 		};
 
 
@@ -97,8 +101,27 @@ d3.csv("data/scatter-data.csv").then((data) => {
 		            "," + (MARGINS.top) + ")") 
 		      .call(d3.axisLeft(Y_SCALE).ticks(10)) 
 		        .attr("font-size", '20px'); 
- 
-}); 
+
+	// function to add point
+	function addPoint(){
+		const xcoord = d3.select("#xVal").property("value");
+		const ycoord = d3.select("#yVal").property("value");
+
+		FRAME1.append("circle")
+		.attr("cx", (X_SCALE(xcoord) + MARGINS.left)) 
+        .attr("cy", (Y_SCALE(ycoord) + MARGINS.bottom))
+        .attr("r", 8)
+        .attr("class", "point")
+		.on("mouseover", hoverColor) 
+        .on("click", selectCoor)
+        .on("mouseleave", revertColor);  
+	}
+
+	//event listener for submit
+	d3.select("#coorButton")
+	.on("click", addPoint); 
+
+});
 
 
 
@@ -194,7 +217,7 @@ d3.csv("data/bar-data.csv").then((data) => {
 
       //revert to original bar color
       d3.select(this)
-			  .style("fill", "black");
+			  .style("fill", "seagreen");
     } 
 
     // Add event listeners
