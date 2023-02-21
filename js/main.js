@@ -61,7 +61,7 @@ d3.csv("data/scatter-data.csv").then((data) => {
  
 }); 
 
-d3.selectAll("points")
+FRAME1.selectAll("points")
       .on("mouseover", function(){
           d3.select("circle")
             .style("fill", "orange");
