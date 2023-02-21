@@ -45,7 +45,15 @@ d3.csv("data/scatter-data.csv").then((data) => {
         .attr("cx", (d) => { return (X_SCALE(d.x) + MARGINS.left); }) 
         .attr("cy", (d) => { return (Y_SCALE(d.y) + MARGINS.bottom); })
         .attr("r", 8)
-        .attr("class", "point"); 
+        .attr("class", "point")
+		.on("mouseover", function(){
+			d3.select(this)
+			  .style("fill", "orange");
+		})
+		.on("mouseout", function(){
+			d3.select(this)
+			  .style("fill", "black")
+		});
 
  	FRAME1.append("g") 
         .attr("transform", "translate(" + MARGINS.left + 
@@ -60,13 +68,3 @@ d3.csv("data/scatter-data.csv").then((data) => {
 	        .attr("font-size", '20px'); 
  
 }); 
-
-FRAME1.selectAll("points")
-      .on("mouseover", function(){
-          d3.select(this)
-            .style("fill", "orange");
-      })
-      .on("mouseout", function(){
-          d3.select(this)
-            .style("fill", "black")
-      });
