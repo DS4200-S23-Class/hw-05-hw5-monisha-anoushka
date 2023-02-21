@@ -45,3 +45,6 @@ body {
   padding: 5px;
 }
 
+.circle:hover {
+    fill: orange;
+}
