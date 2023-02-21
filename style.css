@@ -44,3 +44,15 @@ body {
   border-radius: 5px;
   padding: 5px;
 }
+
+
+/* class to add border to svg circles*/
+.bordered {
+    stroke: green;
+    stroke-width: 5px;
+}
+
+
+.point {
+  fill: seagreen;
+}
