@@ -61,7 +61,7 @@ d3.csv("data/scatter-data.csv").then((data) => {
  
 }); 
 
-d3.selectAll("points")
+d3.selectAll("point")
       .on("mouseover", function(){
           d3.select(this)
             .style("background-color", "orange");
