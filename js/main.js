@@ -55,7 +55,7 @@ d3.csv("data/scatter-data.csv").then((data) => {
     function hoverColor(){
     	d3.select(this)
 			  .style("fill", "orange");
-    }
+    };
 
 
     // function to remove color after hovered
@@ -113,7 +113,7 @@ d3.csv("data/scatter-data.csv").then((data) => {
 		.on("mouseover", hoverColor) 
         .on("click", selectCoor)
         .on("mouseleave", revertColor);  
-	}
+	};
 
 	//event listener for submit button
 	d3.select("#coorButton")
@@ -197,7 +197,7 @@ d3.csv("data/bar-data.csv").then((data) => {
       d3.select(this)
 			  .style("fill", "orange");
 
-    }
+    };
 
     function handleMousemove(event, d) {
 
@@ -206,7 +206,7 @@ d3.csv("data/bar-data.csv").then((data) => {
               .style("left", (event.pageX + 10) + "px") 
               .style("top", (event.pageY - 50) + "px"); 
      
-    }
+    };
 
     function handleMouseleave(event, d) {
 
@@ -216,7 +216,7 @@ d3.csv("data/bar-data.csv").then((data) => {
       //revert to original bar color
       d3.select(this)
 			  .style("fill", "seagreen");
-    } 
+    };
 
     // Add event listeners
     FRAME2.selectAll(".bar")
