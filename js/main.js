@@ -74,9 +74,7 @@ d3.csv("data/scatter-data.csv").then((data) => {
 			const circle = d3.select(this);
 			circle.classed("bordered", !circle.classed("bordered"));
 			const xPt = X_SCALE.invert(circle.attr("cx"));
-			console.log(xPt);
 			const yPt = Y_SCALE.invert(circle.attr("cy"));
-			console.log(yPt);
 			PTSELECT.html("<br> Coordinate of Selected Point: (" + (Math.round(xPt) - 1) + "," + (Math.round(yPt) + 1) + ")");
 		};
 
@@ -117,7 +115,7 @@ d3.csv("data/scatter-data.csv").then((data) => {
         .on("mouseleave", revertColor);  
 	}
 
-	//event listener for submit
+	//event listener for submit button
 	d3.select("#coorButton")
 	.on("click", addPoint); 
 
