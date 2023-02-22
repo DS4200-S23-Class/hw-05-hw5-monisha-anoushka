@@ -28,10 +28,10 @@ d3.csv("data/scatter-data.csv").then((data) => {
 
 	  // create scales to map x and y values to pixels 
 	  const X_SCALE = d3.scaleLinear() 
-	                    .domain([0, (MAX_X)]) 
+	                    .domain([0, (MAX_X + 1)]) 
 	                    .range([0, VIS_WIDTH]); 
 	  const Y_SCALE = d3.scaleLinear() 
-	                    .domain([0, (MAX_Y)]) 
+	                    .domain([0, (MAX_Y + 1)]) 
 	                    .range([VIS_HEIGHT, 0]); 
 
 
