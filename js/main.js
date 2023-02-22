@@ -73,11 +73,11 @@ d3.csv("data/scatter-data.csv").then((data) => {
 		function selectCoor(d){
 			const circle = d3.select(this);
 			circle.classed("bordered", !circle.classed("bordered"));
-			const xPt = circle.attr("cx");
+			const xPt = X_SCALE.invert(circle.attr("cx"));
 			console.log(xPt);
-			const yPt = circle.attr("cy");
+			const yPt = Y_SCALE.invert(circle.attr("cy"));
 			console.log(yPt);
-			PTSELECT.html("<br> Coordinate of Selected Point: (" + xPt + "," + yPt + ")");
+			PTSELECT.html("<br> Coordinate of Selected Point: (" + (Math.round(xPt) - 1) + "," + (Math.round(yPt) + 1) + ")");
 		};
 
 
