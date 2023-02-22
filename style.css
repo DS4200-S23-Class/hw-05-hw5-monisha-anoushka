@@ -36,6 +36,8 @@ body {
     flex: 40;
 }
 
+
+/* create class for tooltip attributes*/
 .tooltip {
   position: absolute;
   background-color: grey;
@@ -52,7 +54,7 @@ body {
     stroke-width: 5px;
 }
 
-
+/* set color of scatter points + bar */
 .point {
   fill: seagreen;
 }
