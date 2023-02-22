@@ -28,17 +28,12 @@ d3.csv("data/scatter-data.csv").then((data) => {
 
 	  // create scales to map x and y values to pixels 
 	  const X_SCALE = d3.scaleLinear() 
-	                    .domain([0, (MAX_X)]) 
+	                    .domain([0, (MAX_X + 1)]) 
 	                    .range([0, VIS_WIDTH]); 
 	  const Y_SCALE = d3.scaleLinear() 
-	                    .domain([0, (MAX_Y)]) 
+	                    .domain([0, (MAX_Y + 1)]) 
 	                    .range([VIS_HEIGHT, 0]); 
 
-
-
-	
-	                       
-  
 
 	// append svg circle points based on data
   FRAME1.selectAll("point")  
@@ -55,7 +50,7 @@ d3.csv("data/scatter-data.csv").then((data) => {
     function hoverColor(){
     	d3.select(this)
 			  .style("fill", "orange");
-    }
+    };
 
 
     // function to remove color after hovered
@@ -115,16 +110,13 @@ d3.csv("data/scatter-data.csv").then((data) => {
 		.on("mouseover", hoverColor) 
         .on("click", selectCoor)
         .on("mouseleave", revertColor);  
-	}
+	};
 
 	//event listener for submit
 	d3.select("#coorButton")
 	.on("click", addPoint); 
 
 });
-
-
-
 
 
 
@@ -175,12 +167,14 @@ d3.csv("data/bar-data.csv").then((data) => {
         .call(d3.axisBottom(CATEGORY_SCALE))
           .attr("font-size", '20px'); 
 
+
   // append y axis
 	FRAME2.append("g") 
 	      .attr("transform", "translate(" + (MARGINS.left) + 
 	            "," + (MARGINS.top) + ")") 
 	      .call(d3.axisLeft(AMT_SCALE).ticks(10)) 
 	        .attr("font-size", '20px'); 
+
 
 	// create new variable for tooltip
   const TOOLTIP = d3.select("#vis2")
@@ -199,7 +193,7 @@ d3.csv("data/bar-data.csv").then((data) => {
       d3.select(this)
 			  .style("fill", "orange");
 
-    }
+    };
 
     function handleMousemove(event, d) {
 
@@ -208,7 +202,7 @@ d3.csv("data/bar-data.csv").then((data) => {
               .style("left", (event.pageX + 10) + "px") 
               .style("top", (event.pageY - 50) + "px"); 
      
-    }
+    };
 
     function handleMouseleave(event, d) {
 
@@ -218,7 +212,7 @@ d3.csv("data/bar-data.csv").then((data) => {
       //revert to original bar color
       d3.select(this)
 			  .style("fill", "seagreen");
-    } 
+    };
 
     // Add event listeners
     FRAME2.selectAll(".bar")
